@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uluslararası Üniversite Danışmanlık Hizmetleri">
+    <title>Tkm Acente</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        
+        // Sayfa yüklendiğinde çalışacak fonksiyon
+        function showSection(id) {
+            // Tüm bölümleri gizle
+            const sections = document.querySelectorAll('main section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Seçilen bölümü göster
+            const selectedSection = document.getElementById(id);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
+
+        // Sayfa yüklendiğinde varsayılan olarak anasayfa gösterilsin
+        window.onload = function() {
+            showSection('home');
+        }
+
+        // Chatbot mesajlarını göndermek için kullanılan fonksiyon
+        function sendMessage(event) {
+            if (event.key === 'Enter' || event.type === 'click') {
+                const userMessage = document.getElementById('user-input').value;
+                if (userMessage.trim() === '') return;
+
+                // Kullanıcı mesajını ekle
+                const userMessageElement = document.createElement('div');
+                userMessageElement.classList.add('message', 'user-message');
+                userMessageElement.textContent = userMessage;
+                document.getElementById('chatbot-messages').appendChild(userMessageElement);
+
+                // Bot cevabını ekle
+                const botMessageElement = document.createElement('div');
+                botMessageElement.classList.add('message', 'bot-message');
+                botMessageElement.textContent = "Bu konuda size nasıl yardımcı olabilirim?";
+                document.getElementById('chatbot-messages').appendChild(botMessageElement);
+
+                // Mesaj kutusunu temizle
+                document.getElementById('user-input').value = '';
+
+                // Chatbox'ı en alta kaydır
+                const chatbotMessages = document.getElementById('chatbot-messages');
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+        }
+
+        // Chatbot penceresini açma ve kapama
+        function openChatbot() {
+            document.getElementById('chatbot').style.display = 'block';
+        }
+
+        function closeChatbot() {
+            document.getElementById('chatbot').style.display = 'none';
+        }
+
+        // FAQ bölümündeki cevapları açıp kapamak için
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    if (!answer.classList.contains('show')) {
+                        // Tüm cevapları gizle
+                        document.querySelectorAll('.faq-answer').forEach(ans => {
+                            ans.classList.remove('show');
+                        });
+                        // Seçilen cevabı göster
+                        answer.classList.add('show');
+                    } else {
+                        answer.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0);" onclick="showSection('home')">Anasayfa</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('about')">Hakkımızda</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('services')">Hizmetler</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('application')">Başvuru Formu</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('contact')">İletişim</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('universities')">Açık Üniversiteler</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('faq')">SSS</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <main>
+        <section id="home">
+            <h1>TKM Acente Uluslararası Üniversite Danışmanlığı</h1>
+            <p>Hayallerinizdeki üniversiteye ulaşmak için rehberiniz!</p>
+
+            <!-- Üniversite Resimleri -->
+            <div class="university-images">
+                <h3>Üniversite Görselleri</h3>
+                <div class="university-gallery">
+                    <img src="image/u.jpg" alt="Üniversite 1" class="university-image">
+                    <img src="image/ul.jpg" alt="Üniversite 2" class="university-image">
+                    <img src="image/ulus.jpg" alt="Üniversite 3" class="university-image">
+                    <img src="image/unver 2.jpg" alt="Üniversite 3" class="university-image">
+                </div>
+            </div>
+
+            <!-- YouTube Video 1 -->
+            <div class="youtube-video">
+                <iframe width="560" height="315" src="widyo/Bartın Üniversitesi (BARÜ) Akademik Gelişim Filmi.mp4" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        
+            <!-- YouTube Video 2 -->
+            <div class="youtube-video">
+                <iframe width="560" height="315" src="widyo/YÖNETİM BİLİŞİM SİSTEMLERİ LİSANS PROGRAMI TANITIMI.mp4" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        
+            <!-- YouTube Video 3 -->
+            <div class="youtube-video">
+                <iframe width="560" height="315" src="widyo/Uluslararası öğrencilerimizden “Türkiye’de öğrenci olmak” yorumu.mp4" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2>Hakkımızda</h2>
+            <p>Uluslararası eğitim konusunda uzman bir ekibiz. Öğrencilerimize en iyi üniversitelere başvuru sürecinde destek sağlıyoruz.</p>
+            <p>Her öğrenciye özel bir danışmanlık hizmeti sunarak, onların hayallerindeki üniversiteye adım atmaları için gerekli tüm süreçleri en verimli şekilde yönetiyoruz. Eğitimde kaliteyi ön planda tutarak, her öğrencimizin akademik ve kişisel gelişimine katkı sağlıyoruz.</p>
+            <p>Danışmanlık hizmetlerimiz, üniversite seçiminden vize başvurusuna, sigorta işlemlerinden konaklama düzenlemelerine kadar geniş bir yelpazeye sahiptir. Sizin için doğru üniversiteyi ve uygun programı bulmak, uluslararası öğrenciler için sunduğumuz en büyük hizmettir.</p>
+        </section>
+        
+
+        <section id="services" style="display: none; padding: 50px 20px; background-color: #f9f9f9; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 2.5em; color: #333; text-align: center; margin-block-end: 40px; font-family: 'Arial', sans-serif;">Hizmetlerimiz</h2>
+            <ul style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/tkm loga.png" alt="Danışmanlık" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Üniversite Seçiminde Danışmanlık</h3>
+                    <p style="color: #777;">En uygun üniversiteyi seçmek için profesyonel danışmanlık hizmeti sağlıyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/vize.jpg" alt="Vize Rehberliği" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Vize ve Seyahat Rehberliği</h3>
+                    <p style="color: #777;">Vize başvuru sürecini kolaylaştıran rehberlik hizmeti sunuyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/sigorta.jpeg" alt="Sigorta" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Sigorta İşlemleri</h3>
+                    <p style="color: #777;">Öğrencilerin sigorta işlemlerini düzenliyor ve takip ediyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/adres.jpeg" alt="Adres Güncelleme" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Adres Güncellemeleri</h3>
+                    <p style="color: #777;">Yerleşim yerinizdeki adres güncellemeleri için yardımcı oluyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/denklik.webp" alt="Denklik Başvurusu" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Denklik Başvurusu</h3>
+                    <p style="color: #777;">Öğrenim gördüğünüz okulun denklik başvurusunu yapıyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/Öğrenci İkamet Başvurusu.jpeg" alt="İkamet Başvurusu" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Öğrenci İkamet Başvurusu</h3>
+                    <p style="color: #777;">Öğrenci ikamet başvuruları ve izin süreçlerini yönetiyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/motorlu.jpeg" alt="Sigorta" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Motorlu Taşıt Sigorta İşlemleri</h3>
+                    <p style="color: #777;">Motorlu taşıtlar için sigorta işlemleri yapıyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/Farklı İkamet Geçiş Başvuruları.jpeg" alt="İkamet Başvurusu" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Farklı İkamet Geçiş Başvuruları</h3>
+                    <p style="color: #777;">Farklı ikamet geçişleri için başvuru işlemlerini gerçekleştiriyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/kabul  belge.jpeg" alt="Davetiye Alma" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Üniversitelerden Davetiye Alma Kabul Belgesi</h3>
+                    <p style="color: #777;">Üniversitelerden davetiye ve kabul belgeleri almanıza yardımcı oluyoruz.</p>
+                </li>
+                <li style="padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; text-align: center; transition: transform 0.3s, box-shadow 0.3s;">
+                    <img src="image/gerekl belge.jpeg" alt="Belge Hazırlama" style="inline-size: 120px; block-size: 120px; border-radius: 50%; margin-block-end: 15px;">
+                    <h3 style="font-size: 1.6em; color: #333; margin-block-end: 15px; font-family: 'Arial', sans-serif;">Üniversite İçin Gerekli Belgeler Listesi ve Hazırlık</h3>
+                    <p style="color: #777;">Üniversite başvurusu için gerekli belgeler listesi ve hazırlık hizmeti sunuyoruz.</p>
+                    <p style="color: #777; font-size: 1em;">Lise diploma ve tercümesi.</p>
+                    <p style="color: #777; font-size: 1em;">Transkript ve tercümesi.</p>
+                    <p style="color: #777; font-size: 1em;">Pasaport ve tercümesi.</p>
+                    <p style="color: #777; font-size: 1em;">Resim 3x4 vesikalık 1 adet.</p>
+                </li>
+            </ul>
+        </section>
+        
+        
+
+        <section id="faq" style="display: none;">
+            <h2>Sık Sorulan Sorular (SSS)</h2>
+            <div class="faq-item">
+                <h3 class="faq-question">1. Yurtdışında üniversite başvurusu nasıl yapılır?</h3>
+                <p class="faq-answer">Başvuru süreci genellikle üniversite seçimi, belgelerin hazırlanması ve başvuru formunun doldurulması ile başlar.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">2. Vize başvurusu nasıl yapılır?</h3>
+                <p class="faq-answer">Vize başvurusu için üniversite kabul belgesi, pasaport ve finansal durumunuzu gösteren belgeler gereklidir.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">3. Üniversite eğitimimi tamamladıktan sonra Türkiye'ye dönerken ne yapmalıyım?</h3>
+                <p class="faq-answer">Yurtdışında eğitim tamamlandıktan sonra, diplomayı Türkiye’de denklik işlemi için başvurmanız gerekebilir.</p>
+            </div>
+        </section>
+        
+        <section id="application" style="display: none;">
+            <h2>Başvuru Formu</h2>
+            <form action="#" method="post">
+                <label for="name">Adınız:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-posta:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="university">Tercih Edilen Üniversite:</label>
+                <input type="text" id="university" name="university">
+
+                <label for="message">Mesajınız:</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Gönder</button>
+                
+            </form>
+        </section>
+
+        <section id="contact" style="display: none; text-align: center; padding: 30px; background-color: #f9f9f9; border-radius: 8px;">
+            <h2 style="font-size: 2em; color: #333;">İletişim</h2>
+            <p style="font-size: 1.2em; color: #555;">Bize ulaşmak için aşağıdaki bilgileri kullanabilirsiniz:</p>
+            <p style="font-size: 1.1em; color: #333;">
+                <strong>E-posta:</strong> murad.edu.tm@gmail.com
+            </p>
+            <p style="font-size: 1.1em; color: #333;">
+                <strong>Telefon:</strong> +90 553 932 45 92
+            </p>
+            <div style="margin-block-start: 20px;">
+                <a href="https://facebook.com" style="font-size: 1.5em; color: #3b5998; margin: 0 15px;" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com" style="font-size: 1.5em; color: #1da1f2; margin: 0 15px;" target="_blank" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com" style="font-size: 1.5em; color: #e1306c; margin: 0 15px;" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com" style="font-size: 1.5em; color: #0077b5; margin: 0 15px;" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://wa.me/905539324592" style="font-size: 1.5em; color: #25d366; margin: 0 15px;" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="imotalk://chat?user=imoid_LQcd06IwJn" style="font-size: 1.5em; color: #33b5e5; margin: 0 15px;" target="_blank" title="IMO">
+                    <i class="fab fa-weixin"></i> <!-- IMO ikonu -->
+                </a>
+            </div>
+        </section>
+        
+        <!-- Font Awesome CDN link -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        
+
+        <section id="universities" style="display: none;">
+            <h2>Açık Üniversiteler</h2>
+            <p>2025-2026 Yurtdışından Öğrenci Kabulü ve Üniversitelere Başvurular Rehberi</p>
+            <p>Yeni başvuru tarıhleri acıldıgında sistem otamatık olarak güncellenecekdir</p>
+            <p>Üniversite başvuru bilgileri için <a href="https://metropolkurslari.com/2024-yurtdisindan-ogrenci-kabulu-ve-universitelere-basvurular-rehberi-2/" target="_blank">buraya tıklayın</a>.</p>
+            <p>E-ikamet başvuru için tıklayın <a href="https://e-ikamet.goc.gov.tr/">buraya tıklayın</a>.</p>
+        </section>
+        
+        <body>
+            <div class="container">
+                <h1>Öğrenci Yorumları</h1>
+                <div class="comments">
+                    <!-- Öğrenci 1 -->
+                    <div class="comment-card">
+                        <img src="image/images.jpg" alt="Öğrenci 1">
+                        <h3>Ali Yılmaz</h3>
+                        <p>"Türkiye’de öğrenci olmak harika bir deneyim. Danışmanlık sürecinde çok yardımcı oldular!"</p>
+                    </div>
+                    <!-- Öğrenci 2 -->
+                    <div class="comment-card">
+                        <img src="image/ispanya marıa,.jpg" alt="Öğrenci 2">
+                        <h3>Maria Gonzalez</h3>
+                        <p>"Danışmanlık hizmeti sayesinde üniversite kabul sürecim çok kolaylaştı. Teşekkürler!"</p>
+                    </div>
+                    <!-- Öğrenci 3 -->
+                    <div class="comment-card">
+                        <img src="image/misir.jpeg" alt="Öğrenci 3">
+                        <h3>Ahmed Al-Sheikh</h3>
+                        <p>"Yeni bir ülkede eğitim almak kolay değil ama doğru rehberlik sayesinde hayalimi gerçekleştirdim."</p>
+                    </div>
+                    <!-- Öğrenci 4 -->
+                    <div class="comment-card">
+                        <img src="image/yelena.jpeg" alt="Öğrenci 4">
+                        <h3>Elena Petrova</h3>
+                        <p>"Her şey çok iyi organize edilmişti. Danışmanlık ekibiyle kendimi güvende hissettim!"</p>
+                    </div>
+                    <!-- Öğrenci 5 -->
+                    <div class="comment-card">
+                        <img src="image/köre genc.jpeg" alt="Öğrenci 5">
+                        <h3>Mehmet Kaya</h3>
+                        <p>"Üniversiteye başlamak için gerekli tüm adımları kolayca tamamladım. Çok teşekkürler!"</p>
+                    </div>
+                    <!-- Öğrenci 6 -->
+                    <div class="comment-card">
+                        <img src="image/amerika.jpeg" alt="Öğrenci 6">
+                        <h3>Chen Wei</h3>
+                        <p>"Yurt dışına taşınma süreci çok kolaylaştı. Ekibe minnettarım!"</p>
+                    </div>
+                    <!-- Öğrenci 7 -->
+                    <div class="comment-card">
+                        <img src="image/arab.jpg" alt="Öğrenci 7">
+                        <h3>Sofia Lopez</h3>
+                        <p>"Başvuru sürecinde destekleyici ve güler yüzlü bir ekip. Kesinlikle tavsiye ederim!"</p>
+                    </div>
+                    <div class="comment-card">
+                        <img src="image/türkmen.jpg" alt="Öğrenci 7">
+                        <h3>Batyr Meredow</h3>
+                        <p>"Ekibe minnettarım ve güler yüzlü bir ekip. Kesinlikle tavsiye ederim!"</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+
+        
+        
+    <!-- Chatbot -->
+<div id="chatbot">
+    <div id="chatbot-header">
+        <span>Chatbot</span>
+        <button onclick="closeChatbot()">X</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input-container">
+        <input type="text" id="user-input" placeholder="Mesajınızı yazın..." onkeypress="sendMessage(event)">
+        <button onclick="sendMessage(event)">Gönder</button>
+    </div>
+</div>
+
+<!-- Chatbot Açma Düğmesi -->
+<button id="open-chatbot-btn" onclick="openChatbot()">Chatbot'u Aç</button>
+
+
+</head>
+<body>
+    <div id="working-hours">
+        <h1>TKM Acente Çalışma Saatleri</h1>
+        <div class="working-day">
+            <span class="day">Pazartesi - Cuma:</span>
+            <span class="hours">09:00 - 18:00</span>
+        </div>
+        <div class="lunch-time">
+            <span>Yemek Saati:</span>
+            <span>13:00 - 14:00</span>
+        </div>
+        <div class="working-day">
+            <span class="day">Cumartesi:</span>
+            <span class="hours">10:00 - 15:00</span>
+        </div>
+        <div class="holiday-info">
+            <p><strong>Not:</strong> Resmi Bayramlar ve Tatil Günlerinde Firma Kapalıdır.</p>
+        </div>
+    </div>
+</head>
+<body>
+
+    <h1>Randevu Sistemi</h1>
+
+    <div class="form-container">
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="name">Adınız Soyadınız:</label>
+                <input type="text" id="name" name="name" placeholder="Adınızı ve Soyadınızı girin" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Randevu Tarihi:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Randevu Saati:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+
+            <button type="submit">Randevu Al</button>
+        </form>
+    </div>
+
+    <div class="message" id="message"></div>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Google Harita Konumu</title>
+        <style>
+            #map {
+                block-size: 500px;
+                inline-size: 100%;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h1>Bizim Konumumuz</h1>
+        <iframe 
+            id="map" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.1814609702583!2d59.96361107499558!3d41.84592086742992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41de68c59c797b55%3A0xa6b30d86668ec7ac!2z0JHQsNC30LDRgCAi0JTQsNGI0L7Qs9GD0Lci!5e0!3m2!1str!2str!4v1738081956129!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" 
+            frameborder="0" 
+            style="border:0;" 
+            allowfullscreen>
+        </iframe>
+     
+    
+        <head>
+            <!-- ... other meta tags and stylesheets ... -->
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'tr'}, 'google_translate_element');
+                }
+           
+
+    

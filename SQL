@@ -1,0 +1,88 @@
+CREATE TABLE Users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    university_preference VARCHAR(255)
+);
+
+CREATE TABLE Services (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    image_url VARCHAR(255)
+);
+
+CREATE TABLE FAQ (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL
+);
+
+CREATE TABLE Universities (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255),
+    description TEXT
+);
+
+CREATE TABLE StudentReviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_name VARCHAR(255) NOT NULL,
+    comment TEXT NOT NULL,
+    image_url VARCHAR(255)
+);
+
+CREATE TABLE Appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL
+);
+
+CREATE TABLE WorkingHours (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    day VARCHAR(50) NOT NULL,
+    opening_time TIME NOT NULL,
+    closing_time TIME NOT NULL,
+    lunch_start TIME,
+    lunch_end TIME
+);
+
+CREATE TABLE ContactInfo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL
+);
+
+-- Example data for Services 
+INSERT INTO Services (name, description, image_url) VALUES 
+('Üniversite Seçiminde Danışmanlık', 'En uygun üniversiteyi seçmek için profesyonel danışmanlık hizmeti sağlıyoruz.', 'image/tkm loga.png'),
+('Vize ve Seyahat Rehberliği', 'Vize başvuru sürecini kolaylaştıran rehberlik hizmeti sunuyoruz.', 'image/vize.jpg'),
+-- Add more services here
+
+-- Example data for FAQ
+INSERT INTO FAQ (question, answer) VALUES 
+('Yurtdışında üniversite başvurusu nasıl yapılır?', 'Başvuru süreci genellikle üniversite seçimi, belgelerin hazırlanması ve başvuru formunun doldurulması ile başlar.'),
+('Vize başvurusu nasıl yapılır?', 'Vize başvurusu için üniversite kabul belgesi, pasaport ve finansal durumunuzu gösteren belgeler gereklidir.'),
+-- Add more FAQs here
+
+-- Example data for Universities
+INSERT INTO Universities (name, image_url, description) VALUES 
+('Bartın Üniversitesi', 'image/u.jpg', 'Akademik Gelişim Filmi'),
+('Yönetim Bilişim Sistemleri', 'image/ul.jpg', 'Lisans Programı Tanıtımı'),
+-- Add more universities here
+
+-- Example data for StudentReviews
+INSERT INTO StudentReviews (student_name, comment, image_url) VALUES 
+('Ali Yılmaz', 'Türkiye’de öğrenci olmak harika bir deneyim. Danışmanlık sürecinde çok yardımcı oldular!', 'image/images.jpg'),
+('Maria Gonzalez', 'Danışmanlık hizmeti sayesinde üniversite kabul sürecim çok kolaylaştı. Teşekkürler!', 'image/ispanya marıa,.jpg'),
+-- Add more reviews here
+
+-- Example data for WorkingHours
+INSERT INTO WorkingHours (day, opening_time, closing_time, lunch_start, lunch_end) VALUES 
+('Pazartesi - Cuma', '09:00', '18:00', '13:00', '14:00'),
+('Cumartesi', '10:00', '15:00', NULL, NULL);
+
+-- Example data for ContactInfo
+INSERT INTO ContactInfo (email, phone) VALUES 
+('murad.edu.tm@gmail.com', '+90 553 932 45 92');
